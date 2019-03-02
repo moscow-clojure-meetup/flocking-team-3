@@ -1,11 +1,10 @@
 (ns main
-  (:require [monet.canvas :as canvas]))
+  (:require [monet.canvas :as canvas])
+  (:require [evaluate :refer [evaluate-world]]))
 
 (def canvas-dom (.getElementById js/document "canvas"))
 
 (def monet-canvas (canvas/init canvas-dom "2d"))
-
-
 
 (defn main! []
   (canvas/add-entity
