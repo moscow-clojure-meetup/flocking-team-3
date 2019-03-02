@@ -3,6 +3,9 @@
 (defn average [xs]
   (/ (reduce + 0 xs) (count xs)))
 
+(defn sign [x]
+  (if (< x 0) -1 (if (= x 0) 0 1)))
+
 (defn in-range [x1 y1 x2 y2]
   (and (<= (.abs js/Math (- x1 x2)) 10)
        (<= (.abs js/Math (- y1 y2)) 10)))
@@ -23,10 +26,11 @@
     (reduce inject {} ebirds)))
 
 (defn apply-rules [{:keys [x y a neibs]}]
-  (let [angles (map :a (vals neibs))]
+  (let [angles (map :a (vals neibs))
+        avg (average angles)]
     {:x x
      :y y
-     :a (average angles)}))
+     :a (+ a (min (* (sign avg) 10) avg))}))
 
 (defn neibs->birds [neibs]
   (map apply-rules (vals neibs)))
