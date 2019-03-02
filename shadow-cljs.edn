@@ -1,7 +1,8 @@
 {:source-paths ["src"]
 
  :dependencies
- [[cider/cider-nrepl "0.21.0"]]
+ [[cider/cider-nrepl "0.21.0"]
+  [rm-hull/monet "0.3.0"]]
 
  :dev-http {8000 "public/"}
 
